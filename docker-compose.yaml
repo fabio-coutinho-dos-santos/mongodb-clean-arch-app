@@ -1,0 +1,14 @@
+services:
+  svc-mongodb:
+    image: mongo:6.0
+    container_name: svc-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pass
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
