@@ -1,4 +1,12 @@
 import { UsersModel } from 'src/infrastructure/database/mongodb/mongoose/users/users.schema';
 import { IRepository } from '../@shared/repository.interface';
 
-export interface IUsersRepository extends IRepository<UsersModel> {}
+export type LimitType = {
+  limit: number;
+};
+
+export interface IUsersRepository extends IRepository<UsersModel> {
+  countActiveUsers(): Promise<number>;
+  averageAge(): Promise<number>;
+  favoriteFruits(limit: LimitType): Promise<any>;
+}

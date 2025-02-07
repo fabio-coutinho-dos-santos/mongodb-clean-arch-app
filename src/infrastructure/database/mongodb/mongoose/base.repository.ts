@@ -1,3 +1,4 @@
+import { UnprocessableEntityException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { IRepository } from 'src/domain/@shared/repository.interface';
 
@@ -21,7 +22,14 @@ export abstract class BaseRepository<T> implements IRepository<T> {
   }
 
   async create(entity: T): Promise<T> {
-    const createdEntity = new this.model(entity);
-    return (await createdEntity.save()) as T;
+    return await this.model
+      .create(entity)
+      .then(
+        (response) =>
+          response ??
+          Promise.reject(
+            new UnprocessableEntityException(`Error creating entity`),
+          ),
+      );
   }
 }

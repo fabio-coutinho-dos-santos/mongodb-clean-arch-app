@@ -5,3 +5,12 @@ GET http://localhost:3000/users
 
 ###
 GET http://localhost:3000/books
+
+###
+GET http://localhost:3000/users/count/active
+
+###
+GET http://localhost:3000/users/age/average
+
+###
+GET http://localhost:3000/users/favorite-fruits/3
