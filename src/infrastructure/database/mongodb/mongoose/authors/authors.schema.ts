@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
 @Schema({ collection: 'authors' })
-export class AuthorsSchema {
+export class AuthorsModel {
   @Prop({ required: true })
   _id: number;
 
@@ -13,5 +13,5 @@ export class AuthorsSchema {
   birth_year: number;
 }
 
-export type AuthorsDocument = HydratedDocument<AuthorsSchema>;
-export const authorsSchema = SchemaFactory.createForClass(AuthorsSchema);
+export type AuthorsDocument = HydratedDocument<AuthorsModel>;
+export const AuthorsSchema = SchemaFactory.createForClass(AuthorsModel);

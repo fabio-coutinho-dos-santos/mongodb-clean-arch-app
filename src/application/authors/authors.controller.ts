@@ -3,7 +3,7 @@ import { IAuthorsRepository } from 'src/domain/authors/authors.repository.interf
 
 @Controller('authors')
 export class AuthorsController {
-  @Inject('AuthorsRepository')
+  @Inject('IAuthorsRepository')
   private readonly authorsRepository: IAuthorsRepository;
 
   @Get('')
