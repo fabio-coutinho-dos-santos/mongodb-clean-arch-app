@@ -8,9 +8,10 @@ export type LimitType = {
 export interface IUsersRepository extends IRepository<UsersModel> {
   countActiveUsers(): Promise<number>;
   averageAge(): Promise<number>;
-  favoriteFruits(limit: LimitType): Promise<any>;
-  groupByGender(): Promise<any>;
-  countByCountry(): Promise<any>;
-  getAllEyeColors(): Promise<any>;
-  getAverageTags(): Promise<any>;
+  favoriteFruits(limit: LimitType): Promise<unknown>;
+  groupByGender(): Promise<unknown>;
+  countByCountry(): Promise<unknown>;
+  getAllEyeColors(): Promise<unknown>;
+  getAverageTags(): Promise<unknown>;
+  countTags(tag: string): Promise<unknown>;
 }

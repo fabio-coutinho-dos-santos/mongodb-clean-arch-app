@@ -150,4 +150,33 @@ export class UsersRepository
       },
     ]);
   }
+
+  async countTags(tag: string): Promise<unknown> {
+    // return this.usersModel.aggregate([
+    //   {
+    //     $match: {
+    //       tags: tag,
+    //     },
+    //   },
+    //   {
+    //     $group: {
+    //       _id: null,
+    //       count: {
+    //         $sum: 1,
+    //       },
+    //     },
+    //   },
+    // ]);
+
+    return this.usersModel.aggregate([
+      {
+        $match: {
+          tags: tag,
+        },
+      },
+      {
+        $count: `usersWithTag-${tag}`,
+      },
+    ]);
+  }
 }

@@ -46,4 +46,9 @@ export class UsersController {
   async getAverageTags() {
     return await this.usersRepository.getAverageTags();
   }
+
+  @Get('count/tag/:tag')
+  async countTags(@Param('tag') tag: string): Promise<any> {
+    return await this.usersRepository.countTags(tag);
+  }
 }

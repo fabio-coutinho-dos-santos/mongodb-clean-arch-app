@@ -26,3 +26,6 @@ GET http://localhost:3000/users/all/eye-colors
 
 ###
 GET http://localhost:3000/users/average/tags
+
+###
+GET http://localhost:3000/users/count/tag/enim
