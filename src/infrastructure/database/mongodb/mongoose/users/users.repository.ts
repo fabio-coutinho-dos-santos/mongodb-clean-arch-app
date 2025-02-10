@@ -64,4 +64,90 @@ export class UsersRepository
 
     return fruits;
   }
+
+  async groupByGender() {
+    return await this.usersModel.aggregate([
+      {
+        $group: {
+          _id: '$gender',
+          count: {
+            $sum: 1,
+          },
+        },
+      },
+    ]);
+  }
+
+  async countByCountry() {
+    return await this.usersModel.aggregate([
+      {
+        $group: {
+          _id: '$company.location.country',
+          count: {
+            $sum: 1,
+          },
+        },
+      },
+      {
+        $sort: {
+          count: -1,
+        },
+      },
+      {
+        $limit: 1,
+      },
+    ]);
+  }
+
+  async getAllEyeColors() {
+    return await this.usersModel.aggregate([
+      {
+        $group: {
+          _id: '$eyeColor',
+        },
+      },
+    ]);
+  }
+
+  async getAverageTags() {
+    // return await this.usersModel.aggregate([
+    //   {
+    //     $unwind: '$tags',
+    //   },
+    //   {
+    //     $group: {
+    //       _id: '$_id',
+    //       count: {
+    //         $sum: 1,
+    //       },
+    //     },
+    //   },
+    //   {
+    //     $group: {
+    //       _id: null,
+    //       averageTags: {
+    //         $avg: '$count',
+    //       },
+    //     },
+    //   },
+    // ]);
+
+    return await this.usersModel.aggregate([
+      {
+        $addFields: {
+          amountTags: {
+            $size: { $ifNull: ['$tags', 0] },
+          },
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          averageTags: {
+            $avg: '$amountTags',
+          },
+        },
+      },
+    ]);
+  }
 }

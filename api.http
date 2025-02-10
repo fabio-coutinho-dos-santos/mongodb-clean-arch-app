@@ -14,3 +14,15 @@ GET http://localhost:3000/users/age/average
 
 ###
 GET http://localhost:3000/users/favorite-fruits/3
+
+###
+GET http://localhost:3000/users/by/gender
+
+###
+GET http://localhost:3000/users/count/by/country
+
+###
+GET http://localhost:3000/users/all/eye-colors
+
+###
+GET http://localhost:3000/users/average/tags

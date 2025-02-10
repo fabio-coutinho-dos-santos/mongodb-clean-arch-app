@@ -9,4 +9,8 @@ export interface IUsersRepository extends IRepository<UsersModel> {
   countActiveUsers(): Promise<number>;
   averageAge(): Promise<number>;
   favoriteFruits(limit: LimitType): Promise<any>;
+  groupByGender(): Promise<any>;
+  countByCountry(): Promise<any>;
+  getAllEyeColors(): Promise<any>;
+  getAverageTags(): Promise<any>;
 }

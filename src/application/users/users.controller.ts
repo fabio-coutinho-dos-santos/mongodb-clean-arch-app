@@ -26,4 +26,24 @@ export class UsersController {
       limit: limit,
     });
   }
+
+  @Get('by/gender')
+  async getUsersByGender() {
+    return await this.usersRepository.groupByGender();
+  }
+
+  @Get('count/by/country')
+  async countUsersByCountr() {
+    return await this.usersRepository.countByCountry();
+  }
+
+  @Get('all/eye-colors')
+  async getAllEyeColors() {
+    return await this.usersRepository.getAllEyeColors();
+  }
+
+  @Get('average/tags')
+  async getAverageTags() {
+    return await this.usersRepository.getAverageTags();
+  }
 }
